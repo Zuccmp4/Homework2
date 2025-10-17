@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Anthony's Word of the Day</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1> Welcome to Anthony's word of the day page!</h1>
+    <p> Everytime you visit we will show you a new word and 
+        it's definition </p>
+
+    <p> This page has been visited <span id = 'hits'></span>  times</p> 
+    <p><a href ="/word.html">View the word of the day</a></p>
+</body>
+
+<script>
+    fetch('/hits')
+        .then(response => response.json())
+        .then(
+            data => {
+                document.getElementById('hits').textContent = data.hits;
+            }
+        )
+        .catch(error=>console.log("error!"))
+        .then(()=> console.log("goodbye!"))
+</script>
+
+</html>
